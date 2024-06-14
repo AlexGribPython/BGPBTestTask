@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import roc_auc_score
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, OrdinalEncoder
+from sklearn.preprocessing import MinMaxScaler, OrdinalEncoder
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.ensemble import RandomForestClassifier
 
@@ -23,7 +23,7 @@ def load_and_process_data():
 
     x = df.drop('Маркер', axis=1)
     y = df['Маркер']
-    y = y.apply(lambda x: 1 if x == 'bad' else 0)
+    y = y.apply(lambda target: 1 if target == 'bad' else 0)
 
     x_train_boost, x_test_boost, y_train, y_test = train_test_split(x, y,
                                                                     test_size=constants.TEST_SIZE,
@@ -78,7 +78,8 @@ def fit_and_save_model():
     logger.info('The model was trained and saved.')
 
     return {
-        'Status': f'The model was trained and saved. AUC-ROC on CV = {gs.best_score_:.4f}, on test = {roc_auc_test:.4f}.'}
+        'Status': f'The model was trained and saved. AUC-ROC on CV = {gs.best_score_:.4f}, '
+                  f'on test = {roc_auc_test:.4f}.'}
 
 
 def predict(data):
