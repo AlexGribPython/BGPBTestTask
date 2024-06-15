@@ -159,6 +159,6 @@ response.json()
 ```
 
 Инструкция по запуску:
-1. В терминале выполнить команду `git clone https://creds@github.com/AlexGribPython/BGPBTestTask.git` (`creds` будут высланы по электронной почти вместе с заданием) для клонирования репозитория с проектом.
+1. В терминале выполнить команду `git clone https://creds@github.com/AlexGribPython/BGPBTestTask.git` (`creds` будут высланы по электронной почте вместе с заданием) для клонирования репозитория с проектом.
 2. В терминале выполнить команду `docker build: docker build -t image_name .` для создания `Docker`-образа.
 3. В терминале выполнить команду `docker run -p 9119:9119 image_name` для запуска контейнера.
