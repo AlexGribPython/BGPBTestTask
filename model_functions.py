@@ -73,6 +73,9 @@ def fit_and_save_model():
 
     logger.info(f'AUC-ROC on test data: {roc_auc_test:.4f}.')
 
+    if not os.path.isdir(f'{os.getcwd()}/models'):
+        os.mkdir(f'{os.getcwd()}/models')
+
     with open(f'{os.getcwd()}/models/model.pkl', 'wb') as output:
         pickle.dump(gs.best_estimator_, output)
     logger.info('The model was trained and saved.')
