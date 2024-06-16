@@ -11,8 +11,6 @@ from sklearn.preprocessing import MinMaxScaler, OrdinalEncoder
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.ensemble import RandomForestClassifier
 
-logger.add(sink='logs', colorize=True, format="{time:YYYY-MM-DD HH:mm:ss} [{level}] {message}")
-
 
 def load_and_process_data():
     df = pd.read_excel(f'{os.getcwd()}/data/data.xlsx', header=1)
